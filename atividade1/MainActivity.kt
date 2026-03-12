@@ -28,19 +28,19 @@ class MainActivity : ComponentActivity() {
             Column(modifier = Modifier.padding(16.dp)) {
 
                 MessageCard(
-                    Message("Larissa", "Jetpack Compose", R.drawable.pfp2)
+                    Message("Larissa", "Bem-vindo!", R.drawable.pfp2)
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 MessageCard(
-                    Message("Elisa", "Bem-vindo", R.drawable.pfp)
+                    Message("Elisa", "To passando mal", R.drawable.pfp)
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 MessageCard(
-                    Message("Sofia", "Bem-vindo!", R.drawable.pfp3)
+                    Message("Sofia", "ja estudasse?!", R.drawable.pfp3)
                 )
             }
         }
@@ -85,19 +85,19 @@ fun PreviewMessageCard() {
     Column(modifier = Modifier.padding(16.dp)) {
 
         MessageCard(
-            Message("Larissa", "Hey, take a look at Jetpack Compose!", R.drawable.pfp2)
+            Message("Larissa", "Bem-vindo!", R.drawable.pfp2)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         MessageCard(
-            Message("Elisa", "Bem-vindo!", R.drawable.pfp)
+            Message("Elisa", "To passando mal", R.drawable.pfp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         MessageCard(
-            Message("Sofia", "Bem-vindo!", R.drawable.pfp3)
+            Message("Sofia", "ja estudasse?", R.drawable.pfp3)
         )
     }
 }
