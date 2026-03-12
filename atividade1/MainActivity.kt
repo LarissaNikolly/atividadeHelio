@@ -3,36 +3,101 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
-
-import androidx.compose.material3.Text
-
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            MessageCard(Message("Android" , "Jetpack Compose"))
+
+            Column(modifier = Modifier.padding(16.dp)) {
+
+                MessageCard(
+                    Message("Larissa", "Jetpack Compose", R.drawable.pfp2)
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                MessageCard(
+                    Message("Elisa", "Bem-vindo", R.drawable.pfp)
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                MessageCard(
+                    Message("Sofia", "Bem-vindo!", R.drawable.pfp3)
+                )
             }
         }
     }
+}
 
-data class Message(val author: String, val body: String)
+data class Message(
+    val author: String,
+    val body: String,
+    val image: Int
+)
+
 @Composable
 fun MessageCard(msg: Message) {
-    Text(text = msg.author)
-    Text(text = msg.body)
+    Row(modifier = Modifier.padding(all = 8.dp)) {
+
+        Image(
+            painter = painterResource(msg.image),
+            contentDescription = "Foto de perfil",
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Column {
+
+            Text(text = msg.author)
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(text = msg.body)
+        }
+    }
 }
-@Preview
+
+@Preview(showBackground = true)
 @Composable
 fun PreviewMessageCard() {
-    MessageCard(Message("Larissa", "Hey, take a look at Jetpack Compose, it's great!"))
+
+    Column(modifier = Modifier.padding(16.dp)) {
+
+        MessageCard(
+            Message("Larissa", "Hey, take a look at Jetpack Compose!", R.drawable.pfp2)
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        MessageCard(
+            Message("Elisa", "Bem-vindo!", R.drawable.pfp)
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        MessageCard(
+            Message("Sofia", "Bem-vindo!", R.drawable.pfp3)
+        )
+    }
 }
